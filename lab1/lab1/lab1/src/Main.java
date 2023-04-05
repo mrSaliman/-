@@ -1,28 +1,31 @@
-import java.util.ArrayList;
-import java.util.List;
-
+// This is the main class of the program
 public class Main {
     public static void main(String[] args) {
-        List<HousePlant> plants = new ArrayList<>();
-        plants.add(new FloweringPlant("Роза", 0.6, 3, 2));
-        plants.add(new FloweringPlant("Орхидея", 0.4, 4, 1));
-        plants.add(new SucculentPlant("Алоэ", 0.2, 5));
-        plants.add(new SucculentPlant("Кактус", 0.3, 10));
-        plants.add(new SucculentPlant("Агава", 0.8, 15));
-        plants.add(new FernPlant("Асплениум", 0.5, 6));
-        plants.add(new FernPlant("Циртомиум", 0.7, 7));
-        plants.add(new FernPlant("Птерис", 0.3, 5));
-        plants.add(new FernPlant("Нефролепис", 0.6, 8));
-        plants.add(new FernPlant("Селагинелла", 0.2, 3));
+        // Create a new instance of PlantRepository
+        PlantRepository repository = new PlantRepository();
         
+        // Add different types of plants to the repository
+        repository.addPlant(new FloweringPlant("Роза", 0.6, 3, 2));
+        repository.addPlant(new FloweringPlant("Орхидея", 0.4, 4, 1));
+        repository.addPlant(new SucculentPlant("Алоэ", 0.2, 5));
+        repository.addPlant(new SucculentPlant("Кактус", 0.3, 10));
+        repository.addPlant(new SucculentPlant("Агава", 0.8, 15));
+        repository.addPlant(new FernPlant("Асплениум", 0.5, 6));
+        repository.addPlant(new FernPlant("Циртомиум", 0.7, 7));
+        repository.addPlant(new FernPlant("Птерис", 0.3, 5));
+        repository.addPlant(new FernPlant("Нефролепис", 0.6, 8));
+        repository.addPlant(new FernPlant("Селагинелла", 0.2, 3));
+        
+        // Print information about all flowering plants in the repository
         System.out.println("Информация по красивоцветущим растениям:");
-        HousePlant.printAllFloweringPlants(plants);
+        HousePlant.printAllFloweringPlants(repository.getPlants());
         
+        // Print information about all short-lived plants in the repository
         System.out.println("\nРастения с продолжительностью жизни менее 5 лет:");
-        HousePlant.printShortLivedPlants(plants);
+        HousePlant.printShortLivedPlants(repository.getPlants());
         
+        // Print information about all tall ferns in the repository
         System.out.println("\nПапоротники выше 0.6 м:");
-        HousePlant.printTallFerns(0.6, plants);
+        HousePlant.printTallFerns(0.6, repository.getPlants());
     }
 }
-
