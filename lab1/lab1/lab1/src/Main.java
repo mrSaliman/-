@@ -1,3 +1,5 @@
+import java.util.List;
+
 // This is the main class of the program
 public class Main {
     public static void main(String[] args) {
@@ -18,14 +20,23 @@ public class Main {
         
         // Print information about all flowering plants in the repository
         System.out.println("Информация по красивоцветущим растениям:");
-        HousePlant.printAllFloweringPlants(repository.getPlants());
+        System.out.println(plantListToString(repository.getAllFloweringPlants()));
         
         // Print information about all short-lived plants in the repository
         System.out.println("\nРастения с продолжительностью жизни менее 5 лет:");
-        HousePlant.printShortLivedPlants(repository.getPlants());
+        System.out.println(plantListToString(repository.getShortLivedPlants()));
         
         // Print information about all tall ferns in the repository
         System.out.println("\nПапоротники выше 0.6 м:");
-        HousePlant.printTallFerns(0.6, repository.getPlants());
+        System.out.println(plantListToString(repository.getTallFerns(0.6)));
+    }
+
+    public static String plantListToString(List<HousePlant> plants) {
+        String outString = "";
+        for (HousePlant plant : plants) {
+            outString += String.format("Название: %s, высота: %.2f м, продолжительность жизни: %d лет.%n",
+                    plant.getName(), plant.getHeight(), plant.getLifespan());
+        }
+        return outString;
     }
 }

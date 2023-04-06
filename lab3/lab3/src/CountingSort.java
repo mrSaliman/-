@@ -1,5 +1,11 @@
 public class CountingSort {
-    public static void sort(int[] arr, int max) {
+    public static int[] sort(int[] arr) {
+        int max = arr[0];
+
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] > max) max = arr[i];
+        }
+
         int[] count = new int[max + 1]; // создаем массив для подсчета
 
         for (int i = 0; i < arr.length; i++) {
@@ -14,5 +20,6 @@ public class CountingSort {
                 count[i]--;
             }
         }
+        return arr;
     }
 }
